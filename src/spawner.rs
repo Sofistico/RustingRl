@@ -60,6 +60,7 @@ pub fn spawn_room(ecs: &mut World, room: &Rect) {
         for _i in 0..num_monsters {
             let mut added = false;
             while !added {
+                // infinte loop....
                 let idx = room.rng_pos_index(MAPWIDTH, rng.to_owned());
                 if !monster_spawn_points.contains(&idx) {
                     monster_spawn_points.push(idx);
@@ -73,6 +74,7 @@ pub fn spawn_room(ecs: &mut World, room: &Rect) {
             while !added {
                 let idx = room.rng_pos_index(MAPWIDTH, rng.to_owned());
                 if !item_spawn_points.contains(&idx) {
+                    // infinte loop....
                     item_spawn_points.push(idx);
                     added = true;
                 }
