@@ -1,5 +1,8 @@
+use super::*;
 use rltk::RandomNumberGenerator;
 use specs::{World, WorldExt};
+
+use crate::math_util;
 
 pub struct Rect {
     pub x1: i32,
@@ -27,7 +30,12 @@ impl Rect {
         ((self.x1 + self.x2) / 2, (self.y1 + self.y2) / 2)
     }
 
-    pub(crate) fn rng_pos(&self, rng: RandomNumberGenerator) -> (i32, i32) {
+    pub(crate) fn rng_pos(&self, mut rng: RandomNumberGenerator) -> (i32, i32) {
         (rng.range(self.x1, self.x2), rng.range(self.y1, self.y2))
+    }
+
+    pub(crate) fn rng_pos_index(&self, width: usize, mut rng: RandomNumberGenerator) -> i32 {
+        let (x, y) = self.rng_pos(rng);
+        math_util::to_index(x, y, width as i32)
     }
 }

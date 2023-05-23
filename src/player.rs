@@ -1,4 +1,7 @@
-use super::{CombatStats, Map, Player, Position, RunState, State, Viewshed, WantsToMelee};
+use super::{
+    CombatStats, GameLog, Item, Map, Player, Position, RunState, State, Viewshed, WantsToMelee,
+    WantsToPickupItem,
+};
 use rltk::{Point, Rltk, VirtualKeyCode};
 use specs::prelude::*;
 use std::cmp::{max, min};
@@ -85,6 +88,7 @@ pub fn read_input(gs: &mut State, ctx: &mut Rltk) -> RunState {
 
             VirtualKeyCode::G => get_item(&mut gs.ecs),
             VirtualKeyCode::I => return RunState::ShowInventory,
+            VirtualKeyCode::D => return RunState::ShowDropItem,
 
             _ => return RunState::AwaitingInput,
         },
