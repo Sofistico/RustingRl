@@ -194,12 +194,11 @@ impl<'a> System<'a> for ItemUseSystem {
                     .insert(mob.0, Confusion { turns: mob.1 })
                     .expect("Unable to insert status");
             }
-
-            let consumable = consumables.get(useitem.item);
-            match consumable {
-                None => {}
-                Some(_) => {
-                    if used_item {
+            if used_item {
+                let consumable = consumables.get(useitem.item);
+                match consumable {
+                    None => {}
+                    Some(_) => {
                         entities.delete(useitem.item).expect("Delete failed");
                     }
                 }

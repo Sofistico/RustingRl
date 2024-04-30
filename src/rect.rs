@@ -1,7 +1,3 @@
-use rltk::RandomNumberGenerator;
-
-use crate::math_util;
-
 pub struct Rect {
     pub x1: i32,
     pub x2: i32,
@@ -26,14 +22,5 @@ impl Rect {
 
     pub fn center(&self) -> (i32, i32) {
         ((self.x1 + self.x2) / 2, (self.y1 + self.y2) / 2)
-    }
-
-    pub(crate) fn rng_pos(&self, mut rng: RandomNumberGenerator) -> (i32, i32) {
-        (rng.range(self.x1, self.x2), rng.range(self.y1, self.y2))
-    }
-
-    pub(crate) fn rng_pos_index(&self, width: usize, rng: RandomNumberGenerator) -> i32 {
-        let (x, y) = self.rng_pos(rng);
-        math_util::to_index(x, y, width as i32)
     }
 }
