@@ -1,5 +1,4 @@
 use super::{CombatStats, GameLog, Name, Player, SufferDamage};
-use rltk::console;
 use specs::prelude::*;
 
 pub struct DamageSystem {}
@@ -13,7 +12,7 @@ impl<'a> System<'a> for DamageSystem {
     fn run(&mut self, data: Self::SystemData) {
         let (mut stats, mut damage) = data;
 
-        for (mut stats, damage) in (&mut stats, &damage).join() {
+        for (stats, damage) in (&mut stats, &damage).join() {
             stats.hp -= damage.amount.iter().sum::<i32>();
         }
 

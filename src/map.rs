@@ -103,50 +103,50 @@ impl Map {
         }
     }
 
-    fn is_exit_valid(&self, x: i32, y: i32) -> bool {
-        if x < 1 || x > self.width - 1 || y < 1 || y > self.height - 1 {
-            return false;
-        }
-        let idx = self.xy_idx(x, y);
-        !self.blocked[idx as usize]
-    }
+    // fn is_exit_valid(&self, x: i32, y: i32) -> bool {
+    //     if x < 1 || x > self.width - 1 || y < 1 || y > self.height - 1 {
+    //         return false;
+    //     }
+    //     let idx = self.xy_idx(x, y);
+    //     !self.blocked[idx as usize]
+    // }
 
-    fn get_avaible_exits(&self, idx: usize) -> rltk::SmallVec<[(usize, f32); 10]> {
-        let mut exits = rltk::SmallVec::new();
-        let x = idx as i32 % self.width;
-        let y = idx as i32 / self.width;
-        let w = self.width as usize;
+    // fn get_avaible_exits(&self, idx: usize) -> rltk::SmallVec<[(usize, f32); 10]> {
+    //     let mut exits = rltk::SmallVec::new();
+    //     let x = idx as i32 % self.width;
+    //     let y = idx as i32 / self.width;
+    //     let w = self.width as usize;
 
-        // Cardinal directions
-        if self.is_exit_valid(x - 1, y) {
-            exits.push((idx - 1, 1.0))
-        };
-        if self.is_exit_valid(x + 1, y) {
-            exits.push((idx + 1, 1.0))
-        };
-        if self.is_exit_valid(x, y - 1) {
-            exits.push((idx - w, 1.0))
-        };
-        if self.is_exit_valid(x, y + 1) {
-            exits.push((idx + w, 1.0))
-        };
+    //     // Cardinal directions
+    //     if self.is_exit_valid(x - 1, y) {
+    //         exits.push((idx - 1, 1.0))
+    //     };
+    //     if self.is_exit_valid(x + 1, y) {
+    //         exits.push((idx + 1, 1.0))
+    //     };
+    //     if self.is_exit_valid(x, y - 1) {
+    //         exits.push((idx - w, 1.0))
+    //     };
+    //     if self.is_exit_valid(x, y + 1) {
+    //         exits.push((idx + w, 1.0))
+    //     };
 
-        // Diagonals
-        if self.is_exit_valid(x - 1, y - 1) {
-            exits.push(((idx - w) - 1, 1.45));
-        }
-        if self.is_exit_valid(x + 1, y - 1) {
-            exits.push(((idx - w) + 1, 1.45));
-        }
-        if self.is_exit_valid(x - 1, y + 1) {
-            exits.push(((idx + w) - 1, 1.45));
-        }
-        if self.is_exit_valid(x + 1, y + 1) {
-            exits.push(((idx + w) + 1, 1.45));
-        }
+    //     // Diagonals
+    //     if self.is_exit_valid(x - 1, y - 1) {
+    //         exits.push(((idx - w) - 1, 1.45));
+    //     }
+    //     if self.is_exit_valid(x + 1, y - 1) {
+    //         exits.push(((idx - w) + 1, 1.45));
+    //     }
+    //     if self.is_exit_valid(x - 1, y + 1) {
+    //         exits.push(((idx + w) - 1, 1.45));
+    //     }
+    //     if self.is_exit_valid(x + 1, y + 1) {
+    //         exits.push(((idx + w) + 1, 1.45));
+    //     }
 
-        exits
-    }
+    //     exits
+    // }
 
     pub fn populate_blocked(&mut self) {
         for (i, tile) in self.tiles.iter_mut().enumerate() {
