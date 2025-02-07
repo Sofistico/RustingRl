@@ -1,5 +1,5 @@
 use inventory_system::{ItemCollectionSystem, ItemDropSystem, ItemUseSystem};
-use rltk::{GameState, Point, Rltk};
+use rltk::{GameState, Point};
 use specs::prelude::*;
 mod components;
 mod gamelog;
@@ -14,7 +14,6 @@ pub use map::*;
 mod player;
 use player::*;
 mod rect;
-pub use rect::Rect;
 #[path = "systems/visibility_system.rs"]
 mod visibility_system;
 use visibility_system::VisibilitySystem;
