@@ -1,3 +1,5 @@
+use crate::rect::Rect;
+
 use super::*;
 use rltk::{RandomNumberGenerator, RGB};
 

@@ -1,5 +1,5 @@
 use inventory_system::{ItemCollectionSystem, ItemDropSystem, ItemUseSystem};
-use rltk::{GameState, Point};
+use rltk::{GameState, Point, Rltk};
 use specs::prelude::*;
 mod components;
 mod gamelog;
